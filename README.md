@@ -1,7 +1,7 @@
 ## Borics Krisztián
 ### NoSQL Exam (Chat app with MongoDb) 2024.10.27.
 
-A repo egy C# nyelven megvalósított chat alkalazást tartalmaz. amely egy lokálisan telepített MongoDb adatbázist használ.
+A repo egy C# nyelven megvalósított chat alkalazást tartalmaz, amely egy lokálisan telepített MongoDb adatbázist használ.
 
 <hr>
 
