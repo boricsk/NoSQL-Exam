@@ -37,6 +37,8 @@ Regisztráció után be tudunk jelentkezni a Login fülön. A bejelentkezés ut�
 
 A chat részen az eddigi üzenetek láthatóak, a rooms részen lehet kiválasztani, hogy melyik szobában akarunk chat-elni, a create new room részben új szoba adható hozzá. Üzenetet az alső szövegmezőbe kell beírni, majd a send gombbal elküldeni, ami tárolja is az üzenetet az adatbázisban. Ha kiválasztunk egy szobát akkor csak az ide tartozó üzenetek jelennek meg, és a kiválasztott szoba lesz az aktuális szoba, azaz ide fognak menni az üzenetek.
 
+<hr>
+
 #### Példa
 
 <img src=./img/sample.jpg>
