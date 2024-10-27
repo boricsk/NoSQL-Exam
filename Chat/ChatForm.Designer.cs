@@ -38,11 +38,11 @@
             chatRoomListBox = new ListBox();
             groupBox3 = new GroupBox();
             messageData = new DataGridView();
+            label1 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             User = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             Message = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -137,27 +137,6 @@
             messageData.Size = new Size(916, 387);
             messageData.TabIndex = 9;
             // 
-            // User
-            // 
-            User.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            User.HeaderText = "User";
-            User.Name = "User";
-            User.Width = 55;
-            // 
-            // Date
-            // 
-            Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Date.HeaderText = "Date";
-            Date.Name = "Date";
-            Date.Width = 56;
-            // 
-            // Message
-            // 
-            Message.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Message.HeaderText = "Message";
-            Message.Name = "Message";
-            Message.Width = 78;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -172,6 +151,30 @@
             timer1.Enabled = true;
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
+            // 
+            // User
+            // 
+            User.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            User.HeaderText = "User";
+            User.Name = "User";
+            User.ReadOnly = true;
+            User.Width = 55;
+            // 
+            // Date
+            // 
+            Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Date.HeaderText = "Date";
+            Date.Name = "Date";
+            Date.ReadOnly = true;
+            Date.Width = 56;
+            // 
+            // Message
+            // 
+            Message.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Message.HeaderText = "Message";
+            Message.Name = "Message";
+            Message.ReadOnly = true;
+            Message.Width = 78;
             // 
             // ChatForm
             // 
