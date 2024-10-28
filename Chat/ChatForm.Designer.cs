@@ -38,11 +38,11 @@
             chatRoomListBox = new ListBox();
             groupBox3 = new GroupBox();
             messageData = new DataGridView();
-            label1 = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
             User = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             Message = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -137,21 +137,6 @@
             messageData.Size = new Size(916, 387);
             messageData.TabIndex = 9;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 7;
-            label1.Text = "label1";
-            // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
-            // 
             // User
             // 
             User.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -175,6 +160,21 @@
             Message.Name = "Message";
             Message.ReadOnly = true;
             Message.Width = 78;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 7;
+            label1.Text = "label1";
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
             // 
             // ChatForm
             // 

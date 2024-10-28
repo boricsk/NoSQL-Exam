@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Chat
 {
@@ -24,26 +25,8 @@ namespace Chat
         {
             InitializeComponent();
             _userName = userName;
-            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
-            RoomList = mongoDBHelper.GetRooms();
-            if (RoomList.Count != 0)
-            {
-                foreach (var room in RoomList)
-                {
-                    chatRoomListBox.Items.Add(room);
-                }
-            }
-            else
-            {
-                string newRoom = "General";
-                chatRoomListBox.Items.Add(newRoom);
-                _currentRoom = newRoom;
-                mongoDBHelper.CreateRoom(newRoom);
-                tbNewRoom.Text = "";
-            }
+            ChatInit();
 
-            label1.Text = $"Room : {_currentRoom}";
-            this.Text = $"{this.Text} - {userName}";
         }
 
         private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,8 +68,8 @@ namespace Chat
             var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
             _currentRoom = chatRoomListBox.SelectedItem.ToString();
             List<ChatMessage> chatMessages = mongoDBHelper.GetMessagesByRoom(_currentRoom);
-
-            for (int i = 0; i < chatMessages.Count - 1; i++)
+            messageData.Rows.Clear();
+            for (int i = 0; i < chatMessages.Count; i++)
             {
                 messageData.Rows.Add(chatMessages[i].UserName, chatMessages[i].MessageDate, chatMessages[i].Message);
             }
@@ -94,6 +77,11 @@ namespace Chat
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+            UpdateMessages();
+        }
+
+        private void UpdateMessages()
         {
             var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
             List<ChatMessage> chatMessages = mongoDBHelper.GetMessagesByRoom(_currentRoom);
@@ -105,7 +93,30 @@ namespace Chat
                     messageData.Rows.Add(chatMessages[i].UserName, chatMessages[i].MessageDate, chatMessages[i].Message);
                 }
             }
+        }
 
+        private void ChatInit()
+        {
+            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            RoomList = mongoDBHelper.GetRooms();
+            if (RoomList.Count != 0)
+            {
+                foreach (var room in RoomList)
+                {
+                    chatRoomListBox.Items.Add(room);
+                }
+            }
+            else
+            {
+                string newRoom = "General";
+                chatRoomListBox.Items.Add(newRoom);
+                _currentRoom = newRoom;
+                mongoDBHelper.CreateRoom(newRoom);
+                tbNewRoom.Text = "";
+            }
+            label1.Text = $"Room : {_currentRoom}";
+            this.Text = $"{this.Text} - {_userName}";
+            UpdateMessages();
         }
     }
 }
