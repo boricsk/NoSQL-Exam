@@ -2,8 +2,6 @@ namespace Chat
 {
     public partial class LoginForm : Form
     {
-        //private string AtlasConString = "";
-        private string MongoConString = "mongodb://localhost:27017";
         private string MongoDatabase = "chat";
 
         public LoginForm()
@@ -13,7 +11,7 @@ namespace Chat
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var mongoHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoHelper = new MongoDBHelper(MongoDatabase);
 
             if (mongoHelper.LoginUser(tbUserName.Text, tbPassword.Text))
             {
@@ -29,7 +27,7 @@ namespace Chat
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            var mongoHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoHelper = new MongoDBHelper(MongoDatabase);
 
             if (tbSignInUserName.Text != "" && tbSignInPassword.Text != "" && !mongoHelper.LoginUser(tbSignInUserName.Text, tbSignInPassword.Text))
             {

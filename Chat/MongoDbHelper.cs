@@ -11,10 +11,11 @@ namespace Chat
     public class MongoDBHelper
     {
         private IMongoDatabase _database;
+        private string _MongoConString = "mongodb://localhost:27017";
 
-        public MongoDBHelper(string connectionString, string databaseName)
+        public MongoDBHelper(string databaseName)
         {
-            var client = new MongoClient(connectionString);
+            var client = new MongoClient(_MongoConString);
             _database = client.GetDatabase(databaseName);
         }
 

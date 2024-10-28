@@ -16,8 +16,6 @@ namespace Chat
 
         private string _currentRoom = "General";
         private string _userName;
-        //private string AtlasConString = "";
-        private string MongoConString = "mongodb://localhost:27017";
         private string MongoDatabase = "chat";
         private List<string> RoomList = new List<string>();
 
@@ -44,7 +42,7 @@ namespace Chat
 
         private void btnSendMessage_Click(object sender, EventArgs e)
         {
-            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoDBHelper = new MongoDBHelper(MongoDatabase);
             ReceiveMessage(_userName, DateTime.Now.ToString(), tbMessage.Text);
             mongoDBHelper.AddMessages(_currentRoom, _userName, tbMessage.Text, DateTime.Now);
             tbMessage.Clear();
@@ -57,7 +55,7 @@ namespace Chat
             {
                 chatRoomListBox.Items.Add(newRoom);
                 _currentRoom = newRoom;
-                var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+                var mongoDBHelper = new MongoDBHelper(MongoDatabase);
                 mongoDBHelper.CreateRoom(newRoom);
                 tbNewRoom.Text = "";
             }
@@ -65,7 +63,7 @@ namespace Chat
 
         private void chatRoomListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoDBHelper = new MongoDBHelper(MongoDatabase);
             _currentRoom = chatRoomListBox.SelectedItem.ToString();
             List<ChatMessage> chatMessages = mongoDBHelper.GetMessagesByRoom(_currentRoom);
             messageData.Rows.Clear();
@@ -83,7 +81,7 @@ namespace Chat
 
         private void UpdateMessages()
         {
-            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoDBHelper = new MongoDBHelper(MongoDatabase);
             List<ChatMessage> chatMessages = mongoDBHelper.GetMessagesByRoom(_currentRoom);
             if (chatMessages.Count != messageData.Rows.Count - 1)
             {
@@ -97,7 +95,7 @@ namespace Chat
 
         private void ChatInit()
         {
-            var mongoDBHelper = new MongoDBHelper(MongoConString, MongoDatabase);
+            var mongoDBHelper = new MongoDBHelper(MongoDatabase);
             RoomList = mongoDBHelper.GetRooms();
             if (RoomList.Count != 0)
             {
