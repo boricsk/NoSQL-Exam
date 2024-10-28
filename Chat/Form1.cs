@@ -2,8 +2,9 @@ namespace Chat
 {
     public partial class LoginForm : Form
     {
-        string MongoConString = "mongodb://localhost:27017";
-        string MongoDatabase = "chat";
+        //private string AtlasConString = "";
+        private string MongoConString = "mongodb://localhost:27017";
+        private string MongoDatabase = "chat";
 
         public LoginForm()
         {
@@ -42,7 +43,6 @@ namespace Chat
             {
                 MessageBox.Show($"Sign in failed! ({tbSignInUserName.Text}) User already exists or given data are not correct.");
             }
-
         }
     }
 }

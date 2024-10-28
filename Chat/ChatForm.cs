@@ -16,7 +16,7 @@ namespace Chat
 
         private string _currentRoom = "General";
         private string _userName;
-
+        //private string AtlasConString = "";
         private string MongoConString = "mongodb://localhost:27017";
         private string MongoDatabase = "chat";
         private List<string> RoomList = new List<string>();
