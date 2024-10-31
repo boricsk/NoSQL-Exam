@@ -1,3 +1,5 @@
+using System;
+using System.Windows.Forms.DataVisualization.Charting;
 namespace BevKi
 {
     internal static class Program
@@ -12,6 +14,9 @@ namespace BevKi
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+
+            
         }
     }
 }
