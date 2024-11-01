@@ -46,3 +46,11 @@ A chat részen az eddigi üzenetek láthatóak, a rooms részen lehet kiválaszt
 <hr>
 
 ### NoSQL Exam (Bevétel-Kiadás app) 2024.10.31.
+
+A bevétel kiadás egy nagyon egyszerű app, amivel a pénzforgalmunkat lehet nyilvántartani.
+
+<img src=./img/bevki-main.jpg>
+
+Az adatokat a lenti struktúrában tárolja egy MongoDb adatbázisban.
+
+<img src=./img/bevki-db.jpg>
