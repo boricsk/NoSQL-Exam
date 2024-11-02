@@ -47,5 +47,13 @@ namespace BevKi
             cashFlowDatas = cashFlowCollection.Find(filter).ToList();
             return cashFlowDatas.Sum(s => s.Value);
         }
+
+        public decimal SumOfValues2(string type)
+        {
+            List<CashFlowData> cashFlowDatas = new List<CashFlowData>();
+            var cashFlowCollection = _database.GetCollection<CashFlowData>(_collectionName);
+            cashFlowDatas = cashFlowCollection.Find(FilterDefinition<CashFlowData>.Empty).ToList();
+            return cashFlowDatas.Where(s => s.Type == type).Sum(s => s.Value);
+        }
     }
 }

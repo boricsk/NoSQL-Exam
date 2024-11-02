@@ -56,7 +56,7 @@ namespace BevKi
                 cashFlows.Rows.Add(cashFlowsList[i].Type, cashFlowsList[i].Date, cashFlowsList[i].Description, cashFlowsList[i].Value);
             }
             UpdateChart();
-            label3.Text = $"Your balance : {(mongoHelper.SumOfValues("Income") - mongoHelper.SumOfValues("Expense")).ToString("C2")}";
+            label3.Text = $"Your balance : {(mongoHelper.SumOfValues2("Income") + mongoHelper.SumOfValues2("Expense")).ToString("C2")}";
         }
 
         private void UpdateChart()
@@ -66,11 +66,11 @@ namespace BevKi
             var series = new System.Windows.Forms.DataVisualization.Charting.Series("Cash Flow Data");
             series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
 
-            series.Points.AddXY("Exp.", mongoHelper.SumOfValues("Expense"));
-            series.Points.AddXY("Inc.", mongoHelper.SumOfValues("Income"));
+            series.Points.AddXY("Exp.", mongoHelper.SumOfValues2("Expense") * -1);
+            series.Points.AddXY("Inc.", mongoHelper.SumOfValues2("Income"));
 
             chart1.Series.Add(series);
-            label3.Text = $"Your balance : {mongoHelper.SumOfValues("Income") - mongoHelper.SumOfValues("Expense")}";
+            label3.Text = $"Your balance : {(mongoHelper.SumOfValues2("Income") + mongoHelper.SumOfValues2("Expense")).ToString("C2")}";
         }
     }
 }
